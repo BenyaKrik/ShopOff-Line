@@ -84,7 +84,7 @@ public class WelcomeController {
     }
 
     @RequestMapping("/s/{name}")
-    @ResponseBody
+    
     public String filterBrand(Model model, @PathVariable("name") String name) {
         List<Product> productList = productService.filterBrandList(name);
         System.out.println(productList);
