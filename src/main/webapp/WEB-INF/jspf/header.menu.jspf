@@ -1,0 +1,32 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="${pageContext.servletContext.contextPath}/showcase">
+                <i class="fa fa-fw fa-shopping-cart"></i> Show Off-line
+            </a>
+        </div>
+        <div class="nav navbar-nav navbar-left">
+
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <img style="width: 24px; height: 24px; background: #aaa; border-radius: 50%;" />
+                    ${not empty username ? username : 'guest'}
+                    <i class="fa fa-fw fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/admin/">Admin Panel</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="/auth?logout">Sign out</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

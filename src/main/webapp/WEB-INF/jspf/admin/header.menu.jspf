@@ -1,0 +1,20 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/showcase">
+                <i class="fa fa-fw fa-shopping-cart"></i> Show Off-line
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+
+                <li class="active"><a href="${pageContext.servletContext.contextPath}/admin/">Products</a></li>
+                <li><a href="${pageContext.servletContext.contextPath}/admin/brands">Brand</a></li>
+                <li><a href="${pageContext.servletContext.contextPath}/admin/users">User</a></li>
+                <li class="dropdown">
+            </ul>
+        </div>
+    </div>
+</nav>

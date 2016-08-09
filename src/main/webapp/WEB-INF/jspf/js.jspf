@@ -1,0 +1,5 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<script src="${pageContext.servletContext.contextPath}/res/js/jquery.min.js" type="text/javascript"></script>
+<script src="${pageContext.servletContext.contextPath}/res/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="${pageContext.servletContext.contextPath}/res/js/transport.js" type="text/javascript"></script>
