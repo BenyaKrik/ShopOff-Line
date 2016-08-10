@@ -21,7 +21,7 @@ import ua.com.codefire.shopoffline.cms.db.service.ProductService;
  * @author user
  */
 @Controller
-@RequestMapping("/brand/")
+@RequestMapping("/brand")
 public class BrandController {
 
     @Autowired
@@ -29,7 +29,7 @@ public class BrandController {
     @Autowired
     private BrandService brandService;
 
-    @RequestMapping("")
+    @RequestMapping("/")
     public String getRoot(Model model) {
         List<Brand> brandList = brandService.getBrandList();
         model.addAttribute("brands", brandList);
@@ -38,16 +38,16 @@ public class BrandController {
     }
 
 //    @ResponseStatus(HttpStatus.MOVED_PERMANENTLY)
-    @RequestMapping("{brand_id}")
-    public String getIndex(Model model, @PathVariable("brand_id") Integer id) {
-        
+    @RequestMapping("/{id}")
+    public String getbyid(Model model, @PathVariable("id") Integer id) {
+        System.out.println(":::: ::: :: :" + id);
         List<Brand> brandList = brandService.getBrandList();
         model.addAttribute("brands", brandList);
-        
+
         Brand brand = brandService.findById(id);
-        model.addAttribute("phones", brand.getPhoneList());
+        model.addAttribute("products", brand.getPhoneList());
         System.out.println(brand.getPhoneList());
-        
+
         return "showcase";
     }
 }

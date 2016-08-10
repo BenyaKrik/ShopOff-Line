@@ -42,5 +42,9 @@ public class ProductService {
     public Product get(int id) {
         return productRepo.findOne(id);
     }
+     
+    public Product save(Product  product) {
+        return productRepo.save(product);
+    }
 
 }

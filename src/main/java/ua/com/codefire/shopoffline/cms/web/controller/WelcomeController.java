@@ -84,7 +84,7 @@ public class WelcomeController {
     }
 
     @RequestMapping("/s/{name}")
-    
+
     public String filterBrand(Model model, @PathVariable("name") String name) {
         List<Product> productList = productService.filterBrandList(name);
         System.out.println(productList);
@@ -92,7 +92,7 @@ public class WelcomeController {
         List<Brand> brandList = brandService.getBrandList();
         model.addAttribute("brands", brandList);
         model.addAttribute("usd", usd);
- 
+
         return "showcase";
     }
 }

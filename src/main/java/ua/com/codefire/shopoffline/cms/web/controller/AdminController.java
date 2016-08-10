@@ -22,7 +22,7 @@ import ua.com.codefire.shopoffline.cms.db.service.ProductService;
  * @author user
  */
 @Controller
-@RequestMapping(value = "/admin/")
+@RequestMapping("/admin/")
 public class AdminController {
 
     @Autowired
@@ -39,10 +39,12 @@ public class AdminController {
 
         return "admin/dashboard";
     }
- @RequestMapping("products")
+
+    @RequestMapping("products")
     public String getIndex() {
         return "redirect:/admin/";
     }
+
     @RequestMapping(method = RequestMethod.GET, value = "brands")
     // @RequestMapping("/admin/brands") 
     public String showBrands(Model model) {

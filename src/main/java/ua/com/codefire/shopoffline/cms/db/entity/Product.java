@@ -33,15 +33,14 @@ public class Product implements Serializable {
     @Lob
     private String body;
     private double cost;
-    
+
     @ManyToOne
     @JoinColumn(name = "brand_id", referencedColumnName = "id")
     private Brand brand;
-    
+
 //    @ManyToOne
 //    @JoinColumn(name = "category_id", referencedColumnName = "id")
 //    private Category category;
-
     public Product() {
     }
 
@@ -52,7 +51,6 @@ public class Product implements Serializable {
 //    public void setCategory(Category category) {
 //        this.category = category;
 //    }
-
     public Product(String model, String body, double cost) {
         this.model = model;
         this.body = body;
@@ -129,5 +127,4 @@ public class Product implements Serializable {
         return "Phone{" + "id=" + id + ", brand=" + brand + ", model=" + model + ", cost=" + cost + '}';
     }
 
-    
 }

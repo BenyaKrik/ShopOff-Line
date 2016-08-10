@@ -22,12 +22,13 @@ import ua.com.codefire.shopoffline.cms.db.service.ProductService;
 @Controller
 @RequestMapping(value = "/admin/brand/")
 public class AdminBrandController {
-     @Autowired
+
+    @Autowired
     private ProductService productService;
     @Autowired
     private BrandService brandService;
-    
-     @RequestMapping("remove/")
+
+    @RequestMapping("remove")
     public String removeBrands(@RequestParam("id") int id) {
         System.out.println("   :::::::" + id);
 
@@ -52,12 +53,12 @@ public class AdminBrandController {
         return "redirect:/admin/brand/edit?id=" + brand.getId();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "edit")
+    @RequestMapping("edit")
     public String editBrands(Model model, @RequestParam Integer id) {
         Brand brand = brandService.getBrand(id);
         model.addAttribute("foundBrand", brand);
         return "admin/brand.edit";
 
     }
-    
+
 }

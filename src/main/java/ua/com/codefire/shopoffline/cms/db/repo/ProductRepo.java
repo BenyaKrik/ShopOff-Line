@@ -13,6 +13,7 @@ import ua.com.codefire.shopoffline.cms.db.entity.Product;
  *
  * @author user
  */
-public interface ProductRepo extends CrudRepository<Product, Integer>{
-   List<Product> findByBrandName(String name);  
+public interface ProductRepo extends CrudRepository<Product, Integer> {
+
+    List<Product> findByBrandName(String name);
 }

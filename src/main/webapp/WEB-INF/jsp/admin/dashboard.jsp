@@ -41,7 +41,7 @@
                             <th>Cost</th>
                             <th>Price</th>
                             <th style="width: 1%; text-align: center;">
-                                <a href="${pageContext.servletContext.contextPath}/phone/add " class="btn btn-xs btn-success"><i class="fa fa-fw fa-plus"></i> add</a>
+                                <a href="${pageContext.servletContext.contextPath}/admin/phone/add " class="btn btn-xs btn-success"><i class="fa fa-fw fa-plus"></i> add</a>
                             </th>
                             </thead>
                             <tbody>
@@ -54,10 +54,10 @@
                                         <td><fmt:formatNumber value="${phone.cost}" type="currency" currencySymbol="$" /></td>
                                         <td>$${phone.cost + 100}</td>
                                         <td nowrap align="right">
-                                            <a href="${pageContext.servletContext.contextPath}/phone/edit?id=${phone.id}" class="btn btn-xs btn-warning">
+                                            <a href="${pageContext.servletContext.contextPath}/admin/product/edit/${phone.id}" class="btn btn-xs btn-warning">
                                                 <i class="fa fa-fw fa-edit"></i>
                                             </a>
-                                            <a href="${pageContext.servletContext.contextPath}/phone/remove?id=${phone.id}" class="btn btn-xs btn-danger"
+                                            <a href="${paSgeContext.servletContext.contextPath}/admin/product/remove/${phone.id}" class="btn btn-xs btn-danger"
                                                onclick="return confirm('Do you really want remove \'${phone.brand.name} ${phone.model}\' phone?');">
                                                 <i class="fa fa-fw fa-trash"></i>
                                             </a>

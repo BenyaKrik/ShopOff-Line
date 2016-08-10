@@ -12,6 +12,6 @@ import ua.com.codefire.shopoffline.cms.db.entity.Brand;
  *
  * @author user
  */
-public interface BrandRepo extends CrudRepository<Brand, Integer>{
-    
+public interface BrandRepo extends CrudRepository<Brand, Integer> {
+
 }

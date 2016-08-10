@@ -30,21 +30,21 @@
                             <label  >Brand:</label>
                             <select name="brand_id" class="form-control">
                                 <c:forEach items="${brandList}" var="brand">
-                                    <option value="${brand.id}" ${foundPhone.brand.id == brand.id ? 'selected' : ''}>${brand.name}</option>
+                                    <option value="${brand.id}" ${foundProduct.brand.id == brand.id ? 'selected' : ''}>${brand.name}</option>
                                 </c:forEach>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Model:</label>
-                            <input class="form-control" type="text" name="model" value="${foundPhone.model}" />
+                            <input class="form-control" type="text" name="model" value="${foundProduct.model}" />
                         </div>
                         <div class="form-group">
                             <label>Body:</label>
-                            <textarea class="form-control" name="body">${foundPhone.body}</textarea>
+                            <textarea class="form-control" name="body">${foundProduct.body}</textarea>
                         </div>
                         <div class="form-group">
                             <label>Cost:</label>
-                            <input class="form-control" type="text" name="cost" value="${foundPhone.cost}" />
+                            <input class="form-control" type="text" name="cost" value="${foundProduct.cost}" />
                         </div>
                         <div class="form-group">
                             <div  class="col-lg-2"> <a href="${pageContext.servletContext.contextPath}/admin/showcase">&lt; back to table</a></div>

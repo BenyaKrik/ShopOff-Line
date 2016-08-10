@@ -13,5 +13,5 @@ import ua.com.codefire.shopoffline.cms.db.entity.User;
  * @author user
  */
 public interface UserRepo extends CrudRepository<User, Integer> {
-    
+
 }

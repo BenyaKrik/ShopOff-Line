@@ -27,34 +27,34 @@ import ua.com.codefire.shopoffline.cms.db.service.ProductService;
 @RequestMapping("/cart/")
 @Controller
 public class CartController {
-    
+
     @Autowired
     private ProductService productService;
-    
+
     @RequestMapping("")
     public String getRoot(Model model, HttpServletRequest req) {
         HttpSession session = req.getSession();
         Map<Integer, Integer> cart = (Map<Integer, Integer>) session.getAttribute("cart");
-        
+
         if (cart != null) {
             Map<Product, Integer> buys = new HashMap();
             for (Integer pid : cart.keySet()) {
                 buys.put(productService.get(pid), cart.get(pid));
             }
-            
+
             model.addAttribute("cart", buys);
         }
-        
+
         return "cart";
     }
-    
+
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, value = "add/ajax")
     public JSONObject postToCart(HttpServletRequest req, @RequestParam Integer productId) {
         HttpSession session = req.getSession();
 
         Map<Integer, Integer> cart = (Map<Integer, Integer>) session.getAttribute("cart");
-        
+
         if (cart == null) {
             cart = new HashMap<>();
             session.setAttribute("cart", cart);
@@ -65,16 +65,16 @@ public class CartController {
         } else {
             cart.put(productId, cart.get(productId) + 1);
         }
-        
+
         Map<Product, Integer> buys = new HashMap();
         for (Integer pid : cart.keySet()) {
             buys.put(productService.get(pid), cart.get(pid));
         }
-        
+
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("response", "SUCCESS");
         jsonObj.put("data", buys);
-        
+
         return jsonObj;
     }
 

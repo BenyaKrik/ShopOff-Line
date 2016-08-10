@@ -39,11 +39,11 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String name, String email,  String password) {
+    public User(String name, String email, String password) {
         this.email = email;
         this.name = name;
         this.password = password;
-        
+
     }
 
     public Integer getId() {
@@ -105,7 +105,7 @@ public class User implements Serializable {
             return false;
         }
         final User other = (User) obj;
-         
+
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -116,6 +116,5 @@ public class User implements Serializable {
     public String toString() {
         return "Users{" + "id=" + id + ", email=" + email + ", name=" + name + ", status=" + status + '}';
     }
-    
 
 }

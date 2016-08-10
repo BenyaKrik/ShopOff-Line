@@ -22,29 +22,29 @@
 
             <div class="panel panel-blue margin-bottom-40">
                 <div class="panel-body">
-                   <h2>${message}<h2/>
-                    <form method="post" class="margin-bottom-40">
-                        <div class="form-group">
-                            <label>Name:</label>
-                            <input class="form-control" type="text" name="name" value="" />
-                        </div>
-                        <div class="form-group">
-                            <label>Email:</label>
-                              <input class="form-control" type="text" name="email" value="" />
-                        </div>
-                        <div class="form-group">
-                            <label>Password:</label>
-                            <input class="form-control" type="password" name="password" value="" />
-                        </div>
-                        <div class="form-group">
-                            <label>Return Password:</label>
-                            <input class="form-control" type="password" name="password2" value="" />
-                        </div>
-                        <div class="form-group">
-    
-                            <div  class="col-lg-2"> <button type="submit" class="btn-u btn-u-blue">Save</button></div>
-                        </div>
-                    </form>
+                    <h2>${message}<h2/>
+                        <form method="post" class="margin-bottom-40">
+                            <div class="form-group">
+                                <label>Name:</label>
+                                <input class="form-control" type="text" name="name" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label>Email:</label>
+                                <input class="form-control" type="text" name="email" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label>Password:</label>
+                                <input class="form-control" type="password" name="password" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label>Return Password:</label>
+                                <input class="form-control" type="password" name="password2" value="" />
+                            </div>
+                            <div class="form-group">
+
+                                <div  class="col-lg-2"> <button type="submit" class="btn-u btn-u-blue">Save</button></div>
+                            </div>
+                        </form>
                 </div>
             </div>
         </div>

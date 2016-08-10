@@ -17,7 +17,7 @@
     </head>
     <body>
         <%@include file="/WEB-INF/jspf/header.menu.jspf" %>
-        
+
         <div class="container">
             <div class="page-header">
                 <h1>Authorization</h1>
