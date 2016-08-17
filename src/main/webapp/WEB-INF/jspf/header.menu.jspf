@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page pageEncoding="UTF-8" %>
 
 <nav class="navbar navbar-inverse navbar-static-top">
@@ -11,9 +12,32 @@
 
         </div>
         <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="#cart" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-fw fa-cart-arrow-down"></i>
+                    <i class="badge" style="background: red;">
+                        <c:if test="${not empty cart}">
+                            <c:set var="total" value="0" />
+                            <c:forEach items="${cart.values()}" var="count">
+                                <c:set var="total" value="${total + count}" />
+                            </c:forEach>
+                            ${total}
+                        </c:if>
+                    </i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header">Products:</li>
+                    <c:forEach items="${cart.keySet()}" var="phone">
+                    <li><a href="#"><i class="badge">${cart.get(phone)}</i> ${phone.model}</a></li>
+                    </c:forEach>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="/cart/"><i class="fa fa-fw fa-cart-arrow-down"></i> Go to cart</a></li>
+                </ul>
+            </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    <img style="width: 24px; height: 24px; background: #aaa; border-radius: 50%;" />
+                    <!--<img style="width: 24px; height: 24px; background: #aaa; border-radius: 50%;" />-->
+                    <i class="fa fa-fw fa-user"></i>
                     ${not empty username ? username : 'guest'}
                     <i class="fa fa-fw fa-caret-down"></i>
                 </a>

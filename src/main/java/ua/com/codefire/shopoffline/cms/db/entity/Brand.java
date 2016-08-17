@@ -5,6 +5,7 @@
  */
 package ua.com.codefire.shopoffline.cms.db.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -35,6 +36,7 @@ public class Brand implements Serializable {
     private String name;
     private String country;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "brand")
     private List<Product> phoneList;
 

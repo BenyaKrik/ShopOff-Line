@@ -5,6 +5,7 @@
  */
 package ua.com.codefire.shopoffline.cms.db.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -33,24 +34,17 @@ public class Product implements Serializable {
     @Lob
     private String body;
     private double cost;
-
     @ManyToOne
     @JoinColumn(name = "brand_id", referencedColumnName = "id")
     private Brand brand;
 
-//    @ManyToOne
-//    @JoinColumn(name = "category_id", referencedColumnName = "id")
-//    private Category category;
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Category category;
+    
     public Product() {
     }
-
-//    public Category getCategory() {
-//        return category;
-//    }
-//
-//    public void setCategory(Category category) {
-//        this.category = category;
-//    }
+    
     public Product(String model, String body, double cost) {
         this.model = model;
         this.body = body;
@@ -95,6 +89,14 @@ public class Product implements Serializable {
 
     public void setCost(double cost) {
         this.cost = cost;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override

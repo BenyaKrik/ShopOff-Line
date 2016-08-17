@@ -6,12 +6,12 @@
 package ua.com.codefire.shopoffline.cms.db.repo;
 
 import org.springframework.data.repository.CrudRepository;
-//import ua.com.codefire.shopoffline.cms.db.entity.Category;
+import ua.com.codefire.shopoffline.cms.db.entity.Category;
 
 /**
  *
  * @author user
  */
-//public interface CategoryRepo extends CrudRepository<Category, Integer> {
+public interface CategoryRepo extends CrudRepository<Category, Integer> {
 
-//}
+}

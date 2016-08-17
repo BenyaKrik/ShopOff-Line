@@ -13,6 +13,9 @@
     <mvc:view-resolvers>
         <mvc:jsp prefix="/WEB-INF/jsp/" suffix=".jsp" />
     </mvc:view-resolvers>
+    <mvc:interceptors>
+        <bean class="ua.com.codefire.shopoffline.cms.web.interceptor.CartInterceptor"/>
+    </mvc:interceptors>
     
     <mvc:annotation-driven />
     <mvc:resources mapping="/res/**" location="/res/" cache-period="60000" order="0" />

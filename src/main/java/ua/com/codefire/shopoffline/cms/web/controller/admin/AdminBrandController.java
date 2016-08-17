@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.com.codefire.shopoffline.cms.web.controller;
+package ua.com.codefire.shopoffline.cms.web.controller.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,11 +51,21 @@ public class AdminBrandController {
         Brand brand = new Brand(name, country);
         brand = brandService.save(brand);
 
-        return "redirect:/admin/brand/edit?id=" + brand.getId();
+        return "redirect:/admin/brand/edit/" + brand.getId();
     }
 
-    @RequestMapping("edit")
-    public String editBrands(Model model, @RequestParam Integer id) {
+    @RequestMapping(path = "edit/{id}", method = RequestMethod.POST, params = {"name", "country"})
+    public String editBrands(@PathVariable Integer id, @RequestParam String name, @RequestParam String country) {
+        Brand brand = brandService.getBrand(id);
+        brand.setName(name);
+        brand.setCountry(country);
+        brand = brandService.save(brand);
+        return "redirect:/admin/brand/edit/" + brand.getId();
+
+    }
+
+    @RequestMapping("edit/{id}")
+    public String editBrands(Model model, @PathVariable Integer id) {
         Brand brand = brandService.getBrand(id);
         model.addAttribute("foundBrand", brand);
         return "admin/brand.edit";

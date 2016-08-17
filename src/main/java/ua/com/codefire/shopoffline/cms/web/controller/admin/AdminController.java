@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.com.codefire.shopoffline.cms.web.controller;
+package ua.com.codefire.shopoffline.cms.web.controller.admin;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

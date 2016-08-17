@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.com.codefire.shopoffline.cms.web.controller;
+package ua.com.codefire.shopoffline.cms.web.controller.admin;
 
 import java.util.List;
+import static org.junit.runner.Request.method;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,27 +55,30 @@ public class AdminProductController {
 
     @RequestMapping("edit/{id}")
     public String editProduct(Model model, @PathVariable("id") Integer id) {
-      Product  product = productService.get(id);
-         model.addAttribute("foundProduct", product);
+        Product product = productService.get(id);
+        model.addAttribute("foundProduct", product);
         List<Brand> brandList = brandService.getBrandList();
         model.addAttribute("brandList", brandList);
         return "admin/product.edit";
     }
-//     @RequestMapping("edit/{id}")
-//    public String editProduct(method = RequestMethod.POST, @PathVariable("id") Integer id, params = {"brand_id", "model", "body", "cost"}) {
-//    
-//    Product  product = productService.get(id);
-//         model.addAttribute("foundProduct", product);
-//        List<Brand> brandList = brandService.getBrandList();
-//        model.addAttribute("brandList", brandList);
-//        return "admin/product.edit";
-//    }
-    
+
+    @RequestMapping(path = "edit/{id}", method = RequestMethod.POST, params = {"brand_id", "model", "body", "cost"})
+    public String editProduct(@PathVariable Integer id, @RequestParam Integer brand_id, @RequestParam String model, @RequestParam String body, @RequestParam Double cost) {
+        Product product = productService.get(id);
+        Brand brand = brandService.findById(brand_id);
+        product.setBody(body);
+        product.setBrand(brand);
+        product.setModel(model);
+        product.setCost(cost);
+        product = productService.save(product);
+        return "redirect:/admin/product/edit/" + product.getId();
+    }
+
     @RequestMapping("remove/{id}")
-    public String removeProduct( @PathVariable("id") Integer id) {
-       productService.removeProduct(id);
-      
+    public String removeProduct(@PathVariable("id") Integer id) {
+        productService.removeProduct(id);
+
         return "redirect:/admin/";
     }
-     
+
 }

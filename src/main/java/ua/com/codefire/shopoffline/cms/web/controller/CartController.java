@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,14 +67,17 @@ public class CartController {
             cart.put(productId, cart.get(productId) + 1);
         }
 
-        Map<Product, Integer> buys = new HashMap();
+        JSONArray array = new JSONArray();
         for (Integer pid : cart.keySet()) {
-            buys.put(productService.get(pid), cart.get(pid));
+            JSONObject phone = new JSONObject();
+            phone.put("phone", productService.get(pid));
+            phone.put("count", cart.get(pid));
+            array.add(phone);
         }
 
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("response", "SUCCESS");
-        jsonObj.put("data", buys);
+        jsonObj.put("data", array);
 
         return jsonObj;
     }

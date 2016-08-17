@@ -31,7 +31,7 @@
 
                 </div>
                 <div class="col-md-9">
-                    <form action="${pageContext.servletContext.contextPath}/phone/remove" method="post">
+                    <form action="${pageContext.servletContext.contextPath}/product/remove" method="post">
                         <table class="table table-striped table-hover">
                             <thead>
                             <th></th>
@@ -41,7 +41,7 @@
                             <th>Cost</th>
                             <th>Price</th>
                             <th style="width: 1%; text-align: center;">
-                                <a href="${pageContext.servletContext.contextPath}/admin/phone/add " class="btn btn-xs btn-success"><i class="fa fa-fw fa-plus"></i> add</a>
+                                <a href="${pageContext.servletContext.contextPath}/admin/product/add " class="btn btn-xs btn-success"><i class="fa fa-fw fa-plus"></i> add</a>
                             </th>
                             </thead>
                             <tbody>
