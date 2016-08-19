@@ -29,12 +29,9 @@ public class AdminBrandController {
     @Autowired
     private BrandService brandService;
 
-    @RequestMapping("remove")
-    public String removeBrands(@RequestParam("id") int id) {
-        System.out.println("   :::::::" + id);
-
+    @RequestMapping(path = "remove/{id}")
+    public String removeBrands(@PathVariable int id) {
         brandService.removeBrand(id);
-
         return "redirect:/admin/brands";
     }
 

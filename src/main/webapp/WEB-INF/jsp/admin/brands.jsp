@@ -28,10 +28,10 @@
                                     <td>${brands.name}</td>
                                     <td>${brands.country}</td>
                                     <td nowrap>
-                                        <a href="${pageContext.servletContext.contextPath}/admin/brand/edit?id=${brands.id}" class="btn btn-xs btn-warning">
+                                        <a href="${pageContext.servletContext.contextPath}/admin/brand/edit/${brands.id}" class="btn btn-xs btn-warning">
                                             <i class="fa fa-fw fa-edit"></i>
                                         </a>
-                                        <a href="${pageContext.servletContext.contextPath}/admin/brand/remove?id=${brands.id}" class="btn btn-xs btn-danger"
+                                        <a href="${pageContext.servletContext.contextPath}/admin/brand/remove/${brands.id}" class="btn btn-xs btn-danger"
                                            onclick="return confirm('Do you really want remove \'${brands.id} ${brands.name}\' brand?');">
                                             <i class="fa fa-fw fa-trash"></i>
                                         </a>

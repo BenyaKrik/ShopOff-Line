@@ -12,7 +12,7 @@
 
                 <li class="active"><a href="${pageContext.servletContext.contextPath}/admin/">Products</a></li>
                 <li><a href="${pageContext.servletContext.contextPath}/admin/brands">Brand</a></li>
-                <li><a href="${pageContext.servletContext.contextPath}/admin/users">User</a></li>
+                <li><a href="${pageContext.servletContext.contextPath}/admin/user/">User</a></li>
                 <li class="dropdown">
             </ul>
         </div>

@@ -29,10 +29,10 @@
                                     <td>${users.email}</td>
                                     <td>${users.status}</td>
                                     <td nowrap>
-                                        <a href="${pageContext.servletContext.contextPath}/admin/user/edit?id=${users.id}" class="btn btn-xs btn-warning">
+                                        <a href="${pageContext.servletContext.contextPath}/admin/user/edit/${users.id}" class="btn btn-xs btn-warning">
                                             <i class="fa fa-fw fa-edit"></i>
                                         </a>
-                                        <a href="${pageContext.servletContext.contextPath}/admin/user/remove?id=${users.id}" class="btn btn-xs btn-danger"
+                                        <a href="${pageContext.servletContext.contextPath}/admin/user/remove/${users.id}" class="btn btn-xs btn-danger"
                                            onclick="return confirm('Do you really want remove \'${users.name} ${users.email}\' brand?');">
                                             <i class="fa fa-fw fa-trash"></i>
                                         </a>
