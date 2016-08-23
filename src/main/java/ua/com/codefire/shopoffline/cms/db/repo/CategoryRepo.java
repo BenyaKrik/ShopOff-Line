@@ -5,6 +5,7 @@
  */
 package ua.com.codefire.shopoffline.cms.db.repo;
 
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import ua.com.codefire.shopoffline.cms.db.entity.Category;
 
@@ -14,4 +15,6 @@ import ua.com.codefire.shopoffline.cms.db.entity.Category;
  */
 public interface CategoryRepo extends CrudRepository<Category, Integer> {
 
+    public List<Category> findByParentIsNull();
+    
 }

@@ -14,6 +14,11 @@
         <mvc:jsp prefix="/WEB-INF/jsp/" suffix=".jsp" />
     </mvc:view-resolvers>
     <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/**"/>
+            <bean class="ua.com.codefire.shopoffline.cms.web.interceptor.AdminInterceptor"/>
+        </mvc:interceptor>
+        
         <bean class="ua.com.codefire.shopoffline.cms.web.interceptor.CartInterceptor"/>
     </mvc:interceptors>
     
