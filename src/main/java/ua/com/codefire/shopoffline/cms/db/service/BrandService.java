@@ -41,7 +41,5 @@ public class BrandService {
         return brandRepo.save(brand);
     }
 
-    public Brand findById(Integer id) {
-        return brandRepo.findOne(id);
-    }
+    
 }

@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,7 +6,7 @@
 package ua.com.codefire.shopoffline.cms.web.controller.admin;
 
 import java.util.List;
-import static org.junit.runner.Request.method;
+ 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,7 +46,7 @@ public class AdminProductController {
             @RequestParam String body,
             @RequestParam Integer cost) {
         Product product = new Product(model, body, cost);
-        Brand brand = brandService.findById(brand_id);
+        Brand brand = brandService.getBrand(brand_id);
         product.setBrand(brand);
         product = productService.save(product);
 
@@ -65,7 +65,7 @@ public class AdminProductController {
     @RequestMapping(path = "edit/{id}", method = RequestMethod.POST, params = {"brand_id", "model", "body", "cost"})
     public String editProduct(@PathVariable Integer id, @RequestParam Integer brand_id, @RequestParam String model, @RequestParam String body, @RequestParam Double cost) {
         Product product = productService.get(id);
-        Brand brand = brandService.findById(brand_id);
+        Brand brand = brandService.getBrand(brand_id);
         product.setBody(body);
         product.setBrand(brand);
         product.setModel(model);

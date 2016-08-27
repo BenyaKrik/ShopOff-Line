@@ -22,14 +22,13 @@
                                 <c:set var="total" value="${total + count}" />
                             </c:forEach>
                             ${total}
-                        </c:if>
-                    </i>
+                        </c:if></i>
                 </a>
                 <ul class="dropdown-menu">
                     <li class="dropdown-header">Products:</li>
-                    <c:forEach items="${cart.keySet()}" var="phone">
-                    <li><a href="#"><i class="badge">${cart.get(phone)}</i> ${phone.model}</a></li>
-                    </c:forEach>
+                        <c:forEach items="${cart.keySet()}" var="phone">
+                        <li><a href="#"><i class="badge">${cart.get(phone)}</i> ${phone.model}</a></li>
+                        </c:forEach>
                     <li role="separator" class="divider"></li>
                     <li><a href="/cart/"><i class="fa fa-fw fa-cart-arrow-down"></i> Go to cart</a></li>
                 </ul>

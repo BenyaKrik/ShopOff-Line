@@ -46,5 +46,8 @@ public class ProductService {
     public Product save(Product  product) {
         return productRepo.save(product);
     }
+//    public List<Product> getProductsByCategory(int category_id){
+//    
+//    }
 
 }

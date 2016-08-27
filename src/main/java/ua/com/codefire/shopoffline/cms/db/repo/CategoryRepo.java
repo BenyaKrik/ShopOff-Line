@@ -17,4 +17,6 @@ public interface CategoryRepo extends CrudRepository<Category, Integer> {
 
     public List<Category> findByParentIsNull();
     
+    public Category findByUrl(String url);
+    
 }

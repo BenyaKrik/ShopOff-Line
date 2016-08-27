@@ -16,4 +16,7 @@ import ua.com.codefire.shopoffline.cms.db.entity.Product;
 public interface ProductRepo extends CrudRepository<Product, Integer> {
 
     List<Product> findByBrandName(String name);
+    
+//    List<Product> findByCategory_IdOrCategory_Parent_Id(int category_id);
+    
 }

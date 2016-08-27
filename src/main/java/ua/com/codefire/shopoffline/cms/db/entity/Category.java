@@ -5,6 +5,7 @@
  */
 package ua.com.codefire.shopoffline.cms.db.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -43,6 +44,17 @@ public class Category implements Serializable {
     @OneToMany(mappedBy = "parent")
     private List<Category> categoryList;
 
+    public List<Product> getProductList() {
+        return phoneList;
+    }
+
+    public void setPhoneList(List<Product> phoneList) {
+        this.phoneList = phoneList;
+    }
+    @JsonIgnore
+    @OneToMany(mappedBy = "category")
+    private List<Product> phoneList;
+    
     public Category() {
     }
 
@@ -83,7 +95,7 @@ public class Category implements Serializable {
     public void setParent(Category parent) {
         this.parent = parent;
     }
-
+   
     public List<Category> getCategoryList() {
         return categoryList;
     }

@@ -24,32 +24,11 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
     @Autowired
     private ProductService productService;
 
-//    @Override
-//    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-//        HttpSession session = request.getSession();
-//        
-//        Map<Integer, Integer> cart = (Map<Integer, Integer>) session.getAttribute("cart");
-//
-//        if (cart == null) {
-//            session.setAttribute("cart", cart = new LinkedHashMap<>());
-//        }
-//        
-//        Map<Product, Integer> phones = new LinkedHashMap<>();
-//        
-//        for (Map.Entry<Integer, Integer> entry : cart.entrySet()) {
-//            phones.put(productService.get(entry.getKey()), entry.getValue());
-//        }
-//        
-//        request.setAttribute("cart", phones);
-//        
-//        return true;
-//    }
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        return false;
+         
+        
+        return true;
     }
-    
-    
-    
+  
 }

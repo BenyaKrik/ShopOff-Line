@@ -4,21 +4,22 @@
 
 <%@attribute name="categories" type="java.util.List" required="true" %>
 <%@attribute name="recursive" type="Boolean"%>
+<%@attribute name="ots" type="String"%>
+
 
 <c:if test="${not empty categories}">
-
     <ul>
+         <% ots = "&nbsp;&nbsp;"+ ots ; %>
         <c:forEach items="${categories}" var="category">
-            <li>
-                <a href="${pageContext.servletContext.contextPath}/category/${category.url}"
-                   >
-                    ${category.name}
-                </a>
 
+            <li>
+                <option value="${category.id}">${ots} ${category.name}</option>
                 <c:if test="${recursive}">
-                    <mt:catreen categories="${category.categoryList}" recursive="true" />
+                    <mt:catreeli categories="${category.categoryList}" recursive="true" ots= "${ots}"/>
                 </c:if>
             </li>
         </c:forEach>
     </ul>
+    
+   
 </c:if>

@@ -6,6 +6,7 @@
 package ua.com.codefire.shopoffline.cms.web.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,6 +24,11 @@ public class AuthorizationController {
 //        }
         return "authorization";
 
+    }
+    
+    @ExceptionHandler
+    public void errorHandler(Throwable exception) {
+        exception.printStackTrace();
     }
 
 }

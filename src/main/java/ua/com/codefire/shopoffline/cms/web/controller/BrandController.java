@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ua.com.codefire.shopoffline.cms.db.entity.Brand;
@@ -44,10 +45,15 @@ public class BrandController {
         List<Brand> brandList = brandService.getBrandList();
         model.addAttribute("brands", brandList);
 
-        Brand brand = brandService.findById(id);
+        Brand brand = brandService.getBrand(id);
         model.addAttribute("products", brand.getPhoneList());
         System.out.println(brand.getPhoneList());
 
         return "showcase";
+    }
+    
+    @ExceptionHandler
+    public void errorHandler(Throwable exception) {
+        exception.printStackTrace();
     }
 }

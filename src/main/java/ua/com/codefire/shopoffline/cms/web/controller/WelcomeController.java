@@ -20,12 +20,16 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import ua.com.codefire.shopoffline.cms.db.entity.Brand;
+import ua.com.codefire.shopoffline.cms.db.entity.Category;
 import ua.com.codefire.shopoffline.cms.db.entity.Product;
 import ua.com.codefire.shopoffline.cms.db.service.BrandService;
+import ua.com.codefire.shopoffline.cms.db.service.CategoryService;
 import ua.com.codefire.shopoffline.cms.db.service.ProductService;
 
 /**
@@ -35,6 +39,8 @@ import ua.com.codefire.shopoffline.cms.db.service.ProductService;
 @Controller
 public class WelcomeController {
 
+    @Autowired
+    private CategoryService categoryService;
     @Autowired
     private ProductService productService;
     @Autowired
@@ -48,7 +54,7 @@ public class WelcomeController {
             URL url = new URL("https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11");
             String json = IOUtils.toString(url, "utf-8");
             JSONArray currencies = (JSONArray) jsonParser.parse(json);
-            System.out.println(currencies);
+//            System.out.println(currencies);
 
             for (int i = 0; i < currencies.size(); i++) {
                 JSONObject curr = (JSONObject) currencies.get(i);
@@ -73,7 +79,8 @@ public class WelcomeController {
         List<Brand> brandList = brandService.getBrandList();
         model.addAttribute("brands", brandList);
         model.addAttribute("usd", usd);
-
+        List<Category> parentCategoryList = categoryService.parentCategoryList();
+        model.addAttribute("categories", parentCategoryList);
         return "showcase";
     }
 
@@ -83,17 +90,39 @@ public class WelcomeController {
         return "redirect:/";
     }
 
-    @RequestMapping("/s/{name}")
-
-    public String filterBrand(Model model, @PathVariable("name") String name) {
-        List<Product> productList = productService.filterBrandList(name);
-        System.out.println(productList);
-        model.addAttribute("products", productList);
-        List<Brand> brandList = brandService.getBrandList();
-        model.addAttribute("brands", brandList);
-        model.addAttribute("usd", usd);
-
-        return "showcase";
+    @ResponseBody
+    @RequestMapping(value = "/show/{brand}", produces = {"application/json"})
+    public Object getANSWER(@PathVariable Integer brand) throws ParseException {
+//        return (JSONObject) jsonParser.parse("{\"message\": \"Your advertisement can be here...\"}");
+        List<Category> chaild = categoryService.getCategory(3).getCategoryList();
+      //  categoryService.getCategoryChild(chaild);
+        System.out.println((String) chaild.toString());
+        for (Category category : categoryService.getCategoryChild(chaild)) {
+                    System.out.println(category.getId().toString());
+                }
+        return brandService.getBrand(brand);
     }
-     
+
+//    @ResponseBody
+//    @RequestMapping(value = "/shows/{brand}")
+//    public String getANSWERs(@PathVariable Integer brand) {
+////        return (JSONObject) jsonParser.parse("{\"message\": \"Your advertisement can be here...\"}");
+//        List<Category> chaild = categoryService.getCategory(brand).getCategoryList();
+//        return (String) categoryService.getCategoryChild(chaild).toString();
+//
+//    }
+    @RequestMapping(value = "/categoryes/")
+    public String getCategoryes(Model model) {
+
+        List<Category> parentCategoryList = categoryService.parentCategoryList();
+        model.addAttribute("categories", parentCategoryList);
+
+        return "admin/category/index";
+    }
+
+    @ExceptionHandler
+    public void errorHandler(Throwable exception) {
+        exception.printStackTrace();
+    }
+
 }
