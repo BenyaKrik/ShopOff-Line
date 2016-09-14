@@ -6,6 +6,7 @@
 package ua.com.codefire.shopoffline.cms.db.service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,18 +29,18 @@ public class CategoryService {
 
     }
 
-    public static List<Category> getCategoryChild(List<Category> categoryList) {  
-        System.out.println(":: :: :: 2");
+    public static List<Category> getCategoryChild(List<Category> categoryList) {
+        List<Category> flatList = new ArrayList<>();
+        
         for (Category category : categoryList) {
-            for (Category categoryChaild : category.getCategoryList()) {
-                System.out.println(":: :: :: 3");
-               categoryList.add(categoryChaild);
-               System.out.println((String) categoryChaild.toString());
-               System.out.println(":: :: :: 4");
-               // CategoryService.getCategoryChild(categoryChaild.getCategoryList());    
-            }   
+            flatList.add(category);
+            
+            List<Category> categoryChild = getCategoryChild(category.getCategoryList());
+            
+            flatList.addAll(categoryChild);
         }
-        return categoryList;
+ 
+        return flatList;
     }
 
     public void removeCategory(int id) {

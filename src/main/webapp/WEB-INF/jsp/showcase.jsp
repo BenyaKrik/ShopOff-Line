@@ -33,10 +33,7 @@
                             <header class="panel-heading">
                                 <h4 class="panel-title">Categories</h3>
                             </header>
-                            <div class="panel-body">
-                                <select   multiple name="category">
-                                    <mt:catreeli categories="${categories}" recursive="true" ots= "&nbsp;&nbsp;"/>
-                                </select>
+                            <div class="panel-body">  
                                 <mt:catreen categories="${categories}" recursive="true" />
                             </div>
                         </section>
@@ -108,7 +105,7 @@
                     </div>
 
                 </div>
-
-                <%@include file="/WEB-INF/jspf/js.jspf" %>
-                </body>
-                </html>
+            </div>
+            <%@include file="/WEB-INF/jspf/js.jspf" %>
+    </body>
+</html>

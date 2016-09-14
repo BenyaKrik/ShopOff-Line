@@ -26,6 +26,12 @@
         <bean class="ua.com.codefire.shopoffline.cms.web.interceptor.CartInterceptor"/>
     </mvc:interceptors>
     
+    <bean id="multipartResolver"
+            class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+             <!-- setting maximum upload size -->
+            <property name="maxUploadSize" value="102400000" />
+    </bean>
+    
     <mvc:annotation-driven />
     <mvc:resources mapping="/res/**" location="/res/" cache-period="60000" order="0" />
     

@@ -7,7 +7,6 @@ package ua.com.codefire.shopoffline.cms.db.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,51 +17,39 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author user
  */
 @Entity
-@Table(name = "categories", uniqueConstraints = {
-    @UniqueConstraint(columnNames = "url")
-})
-public class Category implements Serializable {
+@Table(name = "purchases")
+public class Purchase implements Serializable {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "url", unique = true)
-    private String url;
-    @Column(name = "name")
-    private String name;
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "parent_id", referencedColumnName = "id") // fk
-    private Category parent;
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private Product product;
     @JsonIgnore
-    @OneToMany(mappedBy = "parent")
-    private List<Category> categoryList;
-    @JsonIgnore
-    @OneToMany(mappedBy = "category")
-    private List<Product> phoneList;
-    
-    public Category() {
+    @ManyToOne
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    private Order order;
+    private String name;
+    private Integer price;
+ 
+    public Purchase() {
     }
 
-    public Category(Integer id, String url, String name, Integer parent_id) {
+    public Purchase(Integer id, Product product, Order order, String name, Integer price) {
         this.id = id;
-        this.url = url;
+        this.product = product;
+        this.order = order;
         this.name = name;
-    }
-
-    public List<Product> getProductList() {
-        return phoneList;
-    }
-
-    public void setPhoneList(List<Product> phoneList) {
-        this.phoneList = phoneList;
+        this.price = price;
     }
 
     public Integer getId() {
@@ -73,12 +60,20 @@ public class Category implements Serializable {
         this.id = id;
     }
 
-    public String getUrl() {
-        return url;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public String getName() {
@@ -89,26 +84,19 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public Category getParent() {
-        return parent;
+    public Integer getPrice() {
+        return price;
     }
 
-    public void setParent(Category parent) {
-        this.parent = parent;
-    }
-   
-    public List<Category> getCategoryList() {
-        return categoryList;
-    }
-
-    public void setCategoryList(List<Category> categoryList) {
-        this.categoryList = categoryList;
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.id);
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.id);
+
         return hash;
     }
 
@@ -123,16 +111,11 @@ public class Category implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Category other = (Category) obj;
+        final Purchase other = (Purchase) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Category{" + "id=" + id + ", url=" + url + ", name=" + name + '}';
     }
 
 }

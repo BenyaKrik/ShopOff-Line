@@ -41,18 +41,18 @@ public class CategoryController {
         return "admin/category/index";
     }
 
-//    @RequestMapping("/{url}")
-//    public String getByUrl(Model model, @PathVariable("url") String url) {
-//
-//        Category category = categoryService.findBrandByUrl(url);
-//        model.addAttribute("products", category.getProductList());
-//        List<Brand> brandList = brandService.getBrandList();
-//        model.addAttribute("brands", brandList);
-//        model.addAttribute("category", category);
-//        
-//
-//            return "showcase";
-//    }
+    @RequestMapping("/{url}")
+    public String getByUrl(Model model, @PathVariable("url") String url) {
+
+        Category category = categoryService.findBrandByUrl(url);
+        model.addAttribute("products", category.getProductList());
+        List<Brand> brandList = brandService.getBrandList();
+        model.addAttribute("brands", brandList);
+        model.addAttribute("category", category);
+        
+
+            return "showcase";
+    }
 
     @RequestMapping("/{filter:(\\d+-?)+}") // 123-1223
     public String getByFilter(Model model, @PathVariable String filter) {

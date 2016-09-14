@@ -95,11 +95,11 @@ public class WelcomeController {
     public Object getANSWER(@PathVariable Integer brand) throws ParseException {
 //        return (JSONObject) jsonParser.parse("{\"message\": \"Your advertisement can be here...\"}");
         List<Category> chaild = categoryService.getCategory(3).getCategoryList();
-      //  categoryService.getCategoryChild(chaild);
+        //  categoryService.getCategoryChild(chaild);
         System.out.println((String) chaild.toString());
         for (Category category : categoryService.getCategoryChild(chaild)) {
-                    System.out.println(category.getId().toString());
-                }
+            System.out.println(category.getId().toString());
+        }
         return brandService.getBrand(brand);
     }
 
@@ -118,6 +118,12 @@ public class WelcomeController {
         model.addAttribute("categories", parentCategoryList);
 
         return "admin/category/index";
+    }
+
+    @RequestMapping(value = "/upload/")
+    public String getUpload() {
+ 
+        return "upload";
     }
 
     @ExceptionHandler
